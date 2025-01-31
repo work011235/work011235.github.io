@@ -22,9 +22,9 @@ export const siteConfig: SiteConfig = {
   slogan: "Exploring the World and Me",
   description: "write a description here",
   social: {
-    github: "https://github.com/username", // leave empty if you don't want to show the github
-    linkedin: "https://www.linkedin.com/in/someone/", // leave empty if you don't want to show the linkedin
-    email: "example@gmail.com", // leave empty if you don't want to show the email
+    github: "https://github.com/work011235", // leave empty if you don't want to show the github
+    linkedin: "https://www.linkedin.com/in/david-s-02094421", // leave empty if you don't want to show the linkedin
+    email: "work011235@gmail.com", // leave empty if you don't want to show the email
     rss: true, // set this to false if you don't want to provide an rss feed
   },
   homepage: {
