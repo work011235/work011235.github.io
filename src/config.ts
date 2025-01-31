@@ -17,10 +17,10 @@ export interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
-  site: "https://example.com/", // your site url
-  title: "Your's blog",
-  slogan: "Exploring the World and Me",
-  description: "write a description here",
+  site: "https://work011235.github.io/", // your site url
+  title: "Cloud Native",
+  slogan: "Exploring technology on prem and in the cloud.",
+  description: "Collecting current, future, and Edisonian (successfully proven ineffective) home lab experiments.  ",
   social: {
     github: "https://github.com/work011235", // leave empty if you don't want to show the github
     linkedin: "https://www.linkedin.com/in/david-s-02094421", // leave empty if you don't want to show the linkedin
