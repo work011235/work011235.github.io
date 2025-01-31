@@ -1,43 +1,10 @@
 ---
-title: "Writing Effective Technical Documentation"
-description: "Learn best practices for creating clear and useful technical documentation."
-date: 2024-03-22
-tags: ["documentation", "technical-writing", "best-practices"]
+title: "Tailscale"
+description: "An easy, self-hosted VPN"
+date: 2025-01-31
+tags: ["VPN", "self-hosted"]
 ---
 
-Good technical documentation is crucial for any software project. Here's how to write documentation that helps rather than frustrates.
+# [Tailscale] (https://tailscale.com/)
 
-## Key Principles
-
-1. **Know Your Audience**
-   - Who are you writing for?
-   - What is their technical level?
-   - What are they trying to achieve?
-
-2. **Structure Matters**
-   - Use clear headings and subheadings
-   - Keep paragraphs focused and concise
-   - Include examples where helpful
-
-## Code Examples
-
-Here's an example of well-documented code:
-
-```javascript
-/**
- * Calculates the sum of an array of numbers
- * @param {number[]} numbers - Array of numbers to sum
- * @returns {number} The sum of all numbers in the array
- */
-function sum(numbers) {
-  return numbers.reduce((total, num) => total + num, 0);
-}
-```
-
-## Best Practices
-
-- Keep it up to date
-- Use consistent terminology
-- Include practical examples
-- Provide context when needed
-- Review and revise regularly
+True to their word, "Tailscale makes secure networking easy".  Much of the work on my home lab incorporates virtualization.  Tailscale makes networking easy, making my home lab available when I'm on the go, even though T-Mobile Home Internet gateways do not allow users to change the Network Address Translation (NAT) type.  With Tailscale, this is no longer a barrier.  
