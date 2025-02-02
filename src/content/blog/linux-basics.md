@@ -5,9 +5,6 @@ date: 2025-01-31
 tags: ["Linux", "Ubuntu"]
 ---
 
-
-# Linux Basics 
-
 ## Abstract 
 The purpose of this document is to reduce the barrier-to-entry for using Linux. There are many resources available which do this. This document outlines the mile markers of my journey from crawling to walking with Linux. Hopefully this speeds your journey. 
 
