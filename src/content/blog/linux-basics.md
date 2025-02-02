@@ -25,6 +25,7 @@ Full disclosure, if you’re new to Linux, I recommend Debian over Ubuntu, as so
 When you are on a computer’s desktop, there are visual cues letting you know which operating system you are using. How do you launch applications on a Windows computer? What about a Mac? When thinking of Windows, you likely imagine navigating the mouse to the “Start Menu”. On a Mac, you likely imagine “the Dock” where application icons are housed. 
 In the same way, gLinux Desktop has ways to launch applications. From the left corner of gLinux, there are 9 dots which can be clicked to view the applications currently available.
 Since Linux is free and open source, they include software which is also free (non-proprietary) to accomplish goals similar to standard paid/proprietary software. Here are a few examples: 
+
 - Internet → Firefox 
 - Microsoft Word → LibreOffice Writer 
 - Microsoft Excel → LibreOffice Calc 
@@ -36,6 +37,7 @@ Linux is an operating system allowing you to use your computer just like iOS or 
 
 ### Command Line Interface (“CLI”) 
 Now we need to address the “elephant in the room”. When people think of Linux, they may picture a person in a hood in a dark room hunched over a laptop with a wall of text scrolling on the screen. The command line interface allows you to navigate your computer with the keyboard instead of your mouse. You can switch folders, create documents, edit documents, check e-mail and more. What follows are some basic terms and navigation techniques to get you started. 
+
 ### Finding “the CLI” 
 By default there is a shortcut pinned to the taskbar for the “Terminal”. You can click this icon or click the nine dots and search for “Terminal”. This will load a window showing a blinking cursor listing the following: 
 
@@ -58,7 +60,7 @@ This is great, but I have no idea where I am. If you type “pwd” and hit ente
 ### mkdir 
 To create a new folder, use the “Make Directory” by typing `mkdir <name of new folder>` and hit enter. 
 
-mkdir stuff 
+`mkdir stuff`
 
 ### QUICK TIP - Using arrow keys in the CLI 
 You just typed a command and realize you want to do basically the same thing again. By using the up arrow, you can scroll through previously executed commands. Try this by hitting the up arrow and changing the name in your “Make Directory” command. 
@@ -79,6 +81,7 @@ This command is not limited to your current directory. If you know the full file
 
 ### QUICK TIP - Using “Tab” 
 Typing file paths or file names can get tedious. If the string you are typing is unique within the directory, you can press “Tab” to have the system auto-complete the text. Let’s say I’m in my ldap directory and want to enter the “stuff” directory. As there are no other directories that start with the letter “s”, I could type “cd s” and click “tab”. The computer will auto populate `cd stuff`. Click enter to execute, changing your current directory to “stuff”. If there are multiple options which begin with similar characters, you will need to type enough so that there is only one matching option. 
+
 Example - My "home directory” contains the following directories: 
 
 - Desktop 
@@ -94,19 +97,26 @@ To use autocomplete to open the Downloads folder, I would need to type “cd Dow
 
 #### .. 
 I’m in a directory but now I want to go to the parent directory (the folder housing my current location). Type “pwd” to “Print Working Directory” as a reference point. Type two periods (“..”) and click “Enter”. Type “pwd” to see your current file path and note the change. 
+
 `pwd` 
+
 `/home/<ldap>/<your directory>`
+
 `..`
+
 `pwd`
+
 `/home/<ldap>/`
 
 ### Disclaimer - CLI Text Editors 
 
 I need to “show my hand” here and point out that I am more comfortable with one text editor because I learned it first. I recommend using Nano so that you’re part of the “cool kid” club that uses it, instead of “Vim” users like me. 
+
 My biggest barrier to entry with Nano is that I didn’t realize that the “^” symbol indicates “Ctrl”. https://staffwww.fullcoll.edu/sedwards/nano/introtonano.html was helpfully informative. 
 
 ### Nano - text editor for cool cats 
 Create a document using Nano by typing `nano <title>.txt`. 
+
 `nano TEST.txt`
 
 #### Add text to your document 
@@ -117,25 +127,33 @@ To exit the document, click “Ctrl+X”
 
 ### Vim - text editors for the rest of us 
 Vim was the first CLI text editor I was introduced to, so it remains my default. To complete the same steps as listed above: 
+
 `vi Test.txt`
+
 Type “i” to “INSERT” text and begin modifying your document
 
 When you’re done, hit “Escape” followed by `:wq` and “Enter” to “write” and “quit” the current file, saving your edits.  If you were in the middle of many edits and needed to quickly save your progress, you would click “Escape” followed by `:w` to “save” the file, then click “i” again to resume editing. 
 
 ### cat 
 Use the “Concatenate” command to display the contents of your file. 
+
 `cat TEST.txt`
+
 `This is a test. `
 
 ### mv to rename a file 
 You have successfully created a file. What if you want to rename it? This can be done using the “Move” command. Type `mv <Original file> <New file name>”.`
+
 `mv TEXT.txt whale.txt `
 
 ### mv to move a file 
 I created my TEST.txt file in my “stuff” directory. What if I want to move it to the parent directory? I can do this using the full file path and the “Move” command. 
+
 `mv TEST.txt /home/<ldap>/ `
+
 ### rm 
 To delete the file, use the “Remove” command. 
+
 `rm TEST.txt`
 
 ### clear 
