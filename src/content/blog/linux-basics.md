@@ -163,8 +163,11 @@ Lists current connection information such as ethernet connections and WIFI.
 
 ## Let’s have some fun 
 Special thanks to TecMint’s “24 Funniest Commands to Try in the Linux Terminal” for the following commands. Let’s “see the Matrix”. 
+
 `sudo apt install cmatrix`
+
 `cmatrix`
+
 Click “ctrl+c” when you’re finished. 
 
 Congratulations on choosing the blue pill and exiting Wonderland.
