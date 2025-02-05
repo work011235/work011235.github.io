@@ -1,8 +1,8 @@
 ---
 title: "Glossary"
 description: "Terms and definitions"
-date: YYYY-MM-DD
-tags: ["tag1", "tag2"]
+date: 2025-02-05
+tags: ["glossary", "terms"]
 ---
 
 # Glossary
