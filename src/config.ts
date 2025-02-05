@@ -19,7 +19,7 @@ export interface SiteConfig {
 export const siteConfig: SiteConfig = {
   site: "https://work011235.github.io/", // your site url
   title: "Cloud Native",
-  slogan: "Home Lab Notebook.",
+  slogan: "Home Lab Notebook",
   description: "This site will serve as a working/evergreen lab notebook documenting current, future, and Edisonian (successfully proven ineffective) home lab lessons.  As an electronic lab notebook, topics will be summarized, processes documented, and data collected to aid in replicating the results.  Like any good chemistry lab notebook, there will be spills, blots, and stains (Not all posts will be hyper-polished), but the resulting patina will add to its character.  ",
 //  Outlining current, future, and Edisonian (successfully proven ineffective) home lab lessons.  
   social: {
