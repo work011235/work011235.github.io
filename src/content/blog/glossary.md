@@ -15,9 +15,11 @@ tags: ["tag1", "tag2"]
 ## HTTPS
 ## IDE
 ## Nextcloud
+## Operating System
 ## PuTTY
 ## SSH
 ## Tailscale
+## Virtual Machine
 ## Virtualization
 ## WinScp
 ## WWW
