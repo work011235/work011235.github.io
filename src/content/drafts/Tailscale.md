@@ -2,7 +2,7 @@
 title: "Tailscale"
 description: "An easy, self-hosted VPN"
 date: 2025-01-31
-tags: ["VPN", "self-hosted"]
+tags: ["production","VPN", "self-hosted"]
 ---
 
 # [Tailscale] (https://tailscale.com/)

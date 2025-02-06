@@ -3,7 +3,7 @@ title: "NextCloud"
 description: "NextCloud Install"
 date: 2025-02-05
 ##  last update
-tags: ["nextcloud", "self-hosted","SQL","LAMP","Ubuntu"]
+tags: ["production","nextcloud", "self-hosted","SQL","LAMP","Ubuntu"]
 ---
 
 # Nextcloud

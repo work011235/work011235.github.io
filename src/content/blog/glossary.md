@@ -2,7 +2,7 @@
 title: "Glossary"
 description: "Terms and definitions"
 date: 2025-02-05
-tags: ["glossary", "terms"]
+tags: ["production","glossary", "terms"]
 ---
 
 # Glossary
@@ -15,12 +15,15 @@ tags: ["glossary", "terms"]
 ## HTTPS
 ## IDE
 ## ISO
+## LAMP
+## LEMP
 ## Nextcloud
 ## Operating System
 ## PuTTY
 ## SSH
+## Stack
 ## Tailscale
 ## Virtual Machine
 ## Virtualization
-## WinScp
+## WinSCP
 ## WWW

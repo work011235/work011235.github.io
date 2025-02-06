@@ -2,7 +2,7 @@
 title: "Linux Basics"
 description: "Reducing the barrier-to-entry for linux."
 date: 2025-01-31
-tags: ["Linux", "Ubuntu"]
+tags: ["production","Linux", "Ubuntu"]
 ---
 
 ## Abstract 
