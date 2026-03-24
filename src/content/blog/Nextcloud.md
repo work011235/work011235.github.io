@@ -28,3 +28,6 @@ The following additional tools needed to leveraged to get this installer onto th
  - WinSCP
  - Tailscale
  - CHMOD
+
+## Update 3/24/26
+At present, I will be shelving Nextcloud as I work on digitally rennovating my homelab.  
