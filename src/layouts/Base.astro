@@ -1,0 +1,65 @@
+---
+// src/layouts/Base.astro
+import '../styles/global.css';
+
+interface Props {
+  title?:       string;
+  description?: string;
+}
+
+const {
+  title       = 'yourname.github.io',
+  description = 'Writing about software, systems, and ideas.',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:title"       content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url"         content={canonical} />
+  <meta name="twitter:card"       content="summary" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Prevent flash of wrong theme -->
+  <script is:inline>
+    (function(){
+      var s = localStorage.getItem('theme');
+      var d = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', s || d);
+    })();
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <slot />
+  </div>
+
+  <script>
+    // Theme toggle — works on every page
+    function boot() {
+      const btn  = document.getElementById('themeToggle');
+      if (!btn) return;
+      const html = document.documentElement;
+      const sync = () => { btn.textContent = html.dataset.theme === 'dark' ? '[ light ]' : '[ dark ]'; };
+      sync();
+      btn.addEventListener('click', () => {
+        const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        sync();
+      });
+    }
+    boot();
+    document.addEventListener('astro:after-swap', boot);
+  </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+---
+// src/pages/index.astro
+import { getCollection } from 'astro:content';
+import Base     from '../layouts/Base.astro';
+import Header   from '../components/Header.astro';
+import Footer   from '../components/Footer.astro';
+import PostCard from '../components/PostCard.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const featured = posts.find(p => p.data.featured) ?? posts[0];
+const rest     = posts.filter(p => p.slug !== featured?.slug);
+---
+<Base>
+  <Header />
+  <main>
+
+    {featured && (
+      <div class="featured">
+        <div class="featured-eyebrow">// latest</div>
+        <div class="featured-title">
+          <a href={`/blog/${featured.slug}`}>{featured.data.title}</a>
+        </div>
+        <div class="featured-desc">{featured.data.description}</div>
+        <a href={`/blog/${featured.slug}`} class="read-more">read →</a>
+      </div>
+    )}
+
+    {rest.length > 0 && (
+      <>
+        <p class="section-label">// archive</p>
+        <ul class="post-list">
+          {rest.map(p => (
+            <PostCard
+              title={p.data.title}
+              date={p.data.date}
+              description={p.data.description}
+              tags={p.data.tags}
+              slug={p.slug}
+            />
+          ))}
+        </ul>
+      </>
+    )}
+
+    <div class="about-blurb">
+      <p class="section-label">// about</p>
+      <p class="about-text">
+        <strong>Your Name</strong> — software engineer, occasional writer.
+        Interested in distributed systems, plain language, and tools that get out of the way.
+        Currently at <strong>Company</strong>. Previously built things at <strong>Other Co</strong>.
+        <br /><br />
+        This blog is a scratchpad. No newsletter cadence, no growth goals — just things worth writing down.
+      </p>
+    </div>
+
+  </main>
+  <Footer />
+</Base>

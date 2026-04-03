@@ -1,0 +1,50 @@
+---
+// src/pages/about.astro
+import Base   from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<Base title="About — yourname.github.io" description="About Your Name.">
+  <Header />
+  <main>
+    <p class="section-label">// about</p>
+    <article class="prose">
+      <p>
+        Hi. I'm <strong>Your Name</strong> — a software engineer based in <strong>City</strong>.
+        I've been writing code professionally since <strong>20XX</strong>, mostly around
+        backend systems, developer tooling, and distributed infrastructure.
+      </p>
+
+      <h2>work</h2>
+      <p>
+        Currently at <strong>Company</strong>, where I work on [what you work on].
+        Before that I was at <strong>Previous Co</strong> doing [what you did].
+      </p>
+
+      <h2>writing</h2>
+      <p>
+        This blog is a place to think out loud. I write when I have something to say —
+        not on a schedule. Topics cluster around software craft, tooling,
+        distributed systems, and the occasional strong opinion.
+      </p>
+
+      <h2>elsewhere</h2>
+      <ul>
+        <li><a href="https://github.com/yourusername"         target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="https://linkedin.com/in/yourusername"    target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="mailto:you@example.com">Email</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+
+      <h2>colophon</h2>
+      <p>
+        Built with <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a>.
+        Posts are Markdown files in <code>src/content/blog/</code>.
+        Deployed via GitHub Actions to GitHub Pages.
+        Font is <a href="https://www.jetbrains.com/lp/mono/" target="_blank" rel="noopener noreferrer">JetBrains Mono</a>.
+        No analytics. No cookies. Just HTML.
+      </p>
+    </article>
+  </main>
+  <Footer />
+</Base>

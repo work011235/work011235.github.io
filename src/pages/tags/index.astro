@@ -1,0 +1,26 @@
+---
+// src/pages/tags/index.astro
+import { getCollection } from 'astro:content';
+import Base   from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const posts = await getCollection('blog', ({ data }) => !data.draft);
+const counts: Record<string, number> = {};
+posts.forEach(p => p.data.tags.forEach(t => { counts[t] = (counts[t] ?? 0) + 1; }));
+const tags = Object.entries(counts).sort(([a], [b]) => a.localeCompare(b));
+---
+<Base title="Tags — yourname.github.io">
+  <Header />
+  <main>
+    <p class="section-label">// tags</p>
+    <div class="tags-grid">
+      {tags.map(([tag, n]) => (
+        <a href={`/tags/${tag}`} class="tag-pill">
+          {tag} <span class="tag-count">({n})</span>
+        </a>
+      ))}
+    </div>
+  </main>
+  <Footer />
+</Base>

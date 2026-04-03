@@ -1,0 +1,38 @@
+---
+// src/layouts/Post.astro
+import Base   from './Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title:       string;
+  date:        Date;
+  description: string;
+  tags:        string[];
+}
+
+const { title, date, description, tags } = Astro.props;
+const fmt = date.toLocaleDateString('en-CA'); // YYYY-MM-DD
+---
+<Base title={`${title} — yourname.github.io`} description={description}>
+  <Header />
+  <main>
+    <a href="/" class="back">← writing</a>
+
+    <header class="post-header">
+      <div class="post-header-date">{fmt}</div>
+      <h1 class="post-header-title">{title}</h1>
+      <p class="post-header-desc">{description}</p>
+      {tags.length > 0 && (
+        <div class="tags" style="margin-top:14px">
+          {tags.map(t => <a href={`/tags/${t}`} class="tag">{t}</a>)}
+        </div>
+      )}
+    </header>
+
+    <article class="prose">
+      <slot />
+    </article>
+  </main>
+  <Footer />
+</Base>

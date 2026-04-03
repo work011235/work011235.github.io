@@ -1,0 +1,50 @@
+---
+// src/pages/projects.astro
+// Edit this array to add/remove projects.
+import Base   from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const projects = [
+  {
+    name: 'project-alpha',
+    desc: 'A description of what this project does and why it exists.',
+    tags: ['rust', 'cli'],
+    href: 'https://github.com/yourusername/project-alpha',
+    year: '2025',
+  },
+  {
+    name: 'tool-beta',
+    desc: 'Another project — something useful, probably.',
+    tags: ['go', 'api'],
+    href: 'https://github.com/yourusername/tool-beta',
+    year: '2024',
+  },
+  {
+    name: 'lib-gamma',
+    desc: 'An open-source library for doing that one thing well.',
+    tags: ['typescript', 'library'],
+    href: 'https://github.com/yourusername/lib-gamma',
+    year: '2024',
+  },
+];
+---
+<Base title="Projects — yourname.github.io">
+  <Header />
+  <main>
+    <p class="section-label">// projects</p>
+    <ul class="post-list">
+      {projects.map(p => (
+        <li class="post-item">
+          <span class="post-date">{p.year}</span>
+          <div class="post-meta">
+            <a href={p.href} target="_blank" rel="noopener noreferrer" class="proj-link">{p.name} ↗</a>
+            <span class="post-excerpt">{p.desc}</span>
+            <div class="tags">{p.tags.map(t => <span class="tag">{t}</span>)}</div>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </main>
+  <Footer />
+</Base>
