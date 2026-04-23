@@ -10,7 +10,7 @@ const counts: Record<string, number> = {};
 posts.forEach(p => p.data.tags.forEach(t => { counts[t] = (counts[t] ?? 0) + 1; }));
 const tags = Object.entries(counts).sort(([a], [b]) => a.localeCompare(b));
 ---
-<Base title="Tags — yourname.github.io">
+<Base title="Tags — work011235.github.io">
   <Header />
   <main>
     <p class="section-label">// tags</p>
