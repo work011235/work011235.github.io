@@ -8,8 +8,8 @@ export async function GET(context: APIContext) {
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
   return rss({
-    title:       'yourname.github.io',
-    description: 'Writing about software, systems, and ideas.',
+    title:       'work011235.github.io',
+    description: 'Electronic lab notebook with roadmap, lessons learned, and splotches and spills along the way.',
     site:        context.site!,
     items: posts.map(post => ({
       title:       post.data.title,
