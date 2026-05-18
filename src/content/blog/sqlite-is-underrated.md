@@ -1,55 +1,136 @@
 ---
-title: "SQLite is Underrated. No, Really."
-date: 2025-10-03
-description: "A single file. Zero config. Surprisingly capable. The more I use it, the more I think the industry overcomplicated the database question."
-tags: ["databases", "sqlite", "opinion"]
+title: "Daily Digest - RSS SendToKindle"
+date: 2026-05-18
+description: "Daily Digest SendToKindle template.  "
+tags: ["SendToKindle", "RSS"]
+featured: true
 ---
 
-Every time I reach for SQLite on a project and it actually works — which is almost always — I feel a quiet kind of vindication.
+An impactful use cases of Large Language Models has been closing the gap between ideas which I have been shared by content creators and the functional implementation.  Having heard multiple verisons of "Click the link in the video description for the sample code" and failing to find the correct link, LLM's provide a way to bridge that gap.  
 
-The conventional wisdom is that SQLite is a toy. It's the embedded database you use when you're building a mobile app, or running tests, or prototyping something you'll "eventually" replace with Postgres. It's fine for small things. It doesn't scale.
+One example was implemented during a trip earlier this year which I continue refining.  Key goals and methods include:  
+ - Google App Scripts (https://script.google.com/home)
+ - SendToKindle
+ - Local Weather
+ - MarkDown
+ - ePub
+ - eInk
 
-This is mostly wrong.
+Leverage API Script Tasks to schedule for delivery at an optimal time of day.
 
-## What SQLite actually is
-
-SQLite is a file-based relational database with full SQL support, ACID transactions, and — as of recent versions — WAL mode for concurrent reads. It is the [most widely deployed database engine in the world](https://www.sqlite.org/mostdeployed.html) by a significant margin. It runs in every iPhone, every Android device, every browser, every Electron app.
-
-It is not a toy. It is a deliberate design choice with real tradeoffs that happen to be favorable for a much larger class of applications than people assume.
-
-## The actual tradeoffs
-
-SQLite has real limitations. It doesn't support multiple concurrent writers (WAL mode helps, but there's still a write lock). It doesn't support replication natively. If your application genuinely needs to scale writes across multiple machines, you need something else.
-
-But ask yourself honestly: does your application need that? Most internal tools, most side projects, most early-stage products, and many production applications with modest write loads do not.
-
-The things SQLite gives you in exchange are significant:
-
-- **Zero operational overhead.** No server to run, no connection pooling to configure, no backups to orchestrate beyond copying a file.
-- **Trivial deployment.** Your database ships with your application. sqlite3 is available everywhere.
-- **Surprisingly fast reads.** For read-heavy workloads on a single machine, SQLite is often faster than a networked database because there's no round-trip latency.
-- **A single file.** You can inspect it, copy it, diff it (with tools), move it. The entire state of your application is in one place.
-
-## When I use it now
-
-These days I default to SQLite for:
-
-- Any internal tooling or admin interface
-- Side projects unless I have a specific reason not to
-- Early product development, even when I expect to "graduate" to Postgres later (I often don't need to)
-- Anything that runs on a single machine with predictable write volumes
-
-Postgres when I need it. SQLite when I don't. The instinct to reach for Postgres by default — before there's any evidence that SQLite won't work — is a form of premature optimization.
-
-```sql
--- This is all you need to get started
-CREATE TABLE posts (
-  id        INTEGER PRIMARY KEY,
-  title     TEXT    NOT NULL,
-  body      TEXT    NOT NULL,
-  published INTEGER NOT NULL DEFAULT 0,
-  created   TEXT    NOT NULL DEFAULT (datetime('now'))
-);
 ```
+/**
+ * CONFIGURATION: Update these values
+ */
+const CONFIG = {
+  RECIPIENT_EMAIL: "<UPDATE-WITH-YOUR-SEND-TO-KINDLE-EMAIL>@kindle.com",
+  TIMEZONE: "GMT-6", // CST
+  CALENDAR_IDS: [
+    "primary", 
+    "[ADDITIONAL-CALENDAR-ID-HERE]",// "your_secondary_id@group.calendar.google.com",
+  ]
+};
 
-Start here. Add complexity when you have evidence you need it.
+function runDailySystemDigest() {
+  const today = new Date();
+  const dateStr = Utilities.formatDate(today, CONFIG.TIMEZONE, "yyyy-MM-dd");
+
+  // 1. FETCH CALENDAR DATA
+  let allEvents = [];
+  CONFIG.CALENDAR_IDS.forEach(id => {
+    try {
+      const cal = CalendarApp.getCalendarById(id);
+      if (cal) {
+        const events = cal.getEventsForDay(today);
+        events.forEach(e => {
+          allEvents.push({
+            time: Utilities.formatDate(e.getStartTime(), CONFIG.TIMEZONE, "hh:mm a"),
+            title: `[${cal.getName().toUpperCase().slice(0, 8)}] ${e.getTitle()}`,
+            timestamp: e.getStartTime().getTime()
+          });
+        });
+      }
+    } catch (err) {
+      console.warn(`Access Denied for Calendar: ${id}`);
+    }
+  });
+
+  // Sort events chronologically
+  allEvents.sort((a, b) => a.timestamp - b.timestamp);
+
+  // 2. FETCH TASKS DATA (Requires Tasks API Service)
+  let taskEntries = [];
+  try {
+    const taskLists = Tasks.Tasklists.list().items;
+    if (taskLists) {
+      taskLists.forEach(list => {
+        const tasks = Tasks.Tasks.list(list.id, { showCompleted: false }).items;
+        if (tasks) {
+          tasks.forEach(t => {
+            const due = t.due ? t.due.split('T')[0] : "---";
+            taskEntries.push(`[ ] ${t.title.padEnd(30)} DUE: ${due}`);
+          });
+        }
+      });
+    }
+  } catch (err) {
+    taskEntries.push("ERROR: Tasks API not enabled in Services.");
+  }
+
+  // 3. GENERATE GREYSCALE TERMINAL HTML
+  const eventRows = allEvents.length > 0 
+    ? allEvents.map(e => `> ${e.time.padEnd(10)} | ${e.title}`).join('\n')
+    : "STATUS_EMPTY: No events scheduled.";
+
+  const taskRows = taskEntries.length > 0 
+    ? taskEntries.join('\n')
+    : "STATUS_CLEAN: No pending tasks.";
+
+  const htmlContent = `
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <style>
+      body { background-color: #e0e0e0; color: #222; font-family: 'Courier New', monospace; padding: 20px; }
+      .shell { background-color: #ffffff; border: 1px solid #888; padding: 25px; box-shadow: 4px 4px 0px #bcbcbc; }
+      .meta { color: #777; font-size: 11px; margin-bottom: 10px; border-bottom: 1px solid #eee; }
+      .cmd { font-weight: bold; margin-bottom: 20px; color: #000; }
+      .cmd:before { content: "$ "; color: #666; }
+      .label { font-weight: bold; background: #333; color: #fff; padding: 2px 6px; display: inline-block; margin-top: 15px; }
+      pre { background: #f8f8f8; padding: 12px; border-left: 3px solid #666; white-space: pre-wrap; font-size: 13px; }
+      .exit { margin-top: 30px; font-size: 10px; color: #999; border-top: 1px dashed #ccc; padding-top: 10px; }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <div class="meta">SESSION_ID: ${Math.random().toString(36).substring(7).toUpperCase()} | ${dateStr}</div>
+      <div class="cmd">./stdout_agenda_report --all-calendars --tasks</div>
+      
+      <div class="label">INCOMPLETE_TASKS</div>
+      <pre>${taskRows}</pre>
+      
+      <div class="label">CALENDAR_AGENDA</div>
+      <pre>${eventRows}</pre>
+      
+      <div class="exit">
+        [ PROCESS COMPLETED SUCCESSFULLY ]<br>
+        [ ATTACHMENT_GENERATED: true ]
+      </div>
+    </div>
+  </body>
+  </html>`;
+
+  // 4. CREATE ATTACHMENT AND SEND
+  const reportBlob = Utilities.newBlob(htmlContent, 'text/html', `Report_${dateStr}.html`);
+  
+  GmailApp.sendEmail(CONFIG.RECIPIENT_EMAIL, `STDOUT: Daily_Report_${dateStr}`, "Morning system digest attached.", {
+    htmlBody: "<h3>System Status: Online</h3><p>Please review the attached terminal report for today's agenda.</p>",
+    attachments: [reportBlob]
+  });
+  
+  console.log("Digest successfully dispatched to " + CONFIG.RECIPIENT_EMAIL);
+}
+```
+---
+
+*If this resonated, the [RSS feed](/feed.xml) is the lowest-friction way to follow along.*
