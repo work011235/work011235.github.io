@@ -133,4 +133,4 @@ function runDailySystemDigest() {
 ```
 ---
 
-*If this resonated, the [RSS feed](/feed.xml) is the lowest-friction way to follow along.*
+// *If this resonated, the [RSS feed](/feed.xml) is the lowest-friction way to follow along.*

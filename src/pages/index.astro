@@ -10,7 +10,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const featured = posts.find(p => p.data.featured) ?? posts[0];
-const rest     = posts.filter(p => p.slug !== featured?.slug);
+const rest     = posts.filter(p => p.id !== featured?.id);
 ---
 <Base>
   <Header />
@@ -20,10 +20,10 @@ const rest     = posts.filter(p => p.slug !== featured?.slug);
       <div class="featured">
         <div class="featured-eyebrow">// latest</div>
         <div class="featured-title">
-          <a href={`/blog/${featured.slug}`}>{featured.data.title}</a>
+          <a href={`/blog/${featured.id}`}>{featured.data.title}</a>
         </div>
         <div class="featured-desc">{featured.data.description}</div>
-        <a href={`/blog/${featured.slug}`} class="read-more">read →</a>
+        <a href={`/blog/${featured.id}`} class="read-more">read →</a>
       </div>
     )}
 
@@ -37,7 +37,7 @@ const rest     = posts.filter(p => p.slug !== featured?.slug);
               date={p.data.date}
               description={p.data.description}
               tags={p.data.tags}
-              slug={p.slug}
+              slug={p.id}
             />
           ))}
         </ul>
