@@ -3,7 +3,7 @@ title: "Daily Digest - RSS SendToKindle"
 date: 2026-05-18
 description: "Daily Digest SendToKindle template.  "
 tags: ["SendToKindle", "RSS"]
-featured: true
+## featured: true
 ---
 
 An impactful use cases of Large Language Models has been closing the gap between ideas which I have been shared by content creators and the functional implementation.  Having heard multiple verisons of "Click the link in the video description for the sample code" and failing to find the correct link, LLM's provide a way to bridge that gap.  
