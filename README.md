@@ -20,7 +20,7 @@ A clean, minimalist blog built with [Astro](https://astro.build), using a monosp
 
 ## Prerequisites
 
-- **Node.js 18 or 20** — download from [nodejs.org](https://nodejs.org)
+- **Node.js 22 (LTS)** — download from [nodejs.org](https://nodejs.org)
 - **npm** (ships with Node)
 - **Git** — download from [git-scm.com](https://git-scm.com)
 - A **GitHub account** — free at [github.com](https://github.com)
@@ -28,7 +28,7 @@ A clean, minimalist blog built with [Astro](https://astro.build), using a monosp
 Check your versions:
 
 ```bash
-node -v   # should print v18.x or v20.x
+node -v   # should print v22.x or later
 npm -v    # should print 9.x or 10.x
 git --version
 ```
@@ -239,6 +239,7 @@ git commit -m "initial commit"
 
 # Point to your GitHub repo (replace URL with yours)
 git remote add origin https://github.com/yourusername/yourusername.github.io.git
+git remote add origin https://github.com/work011235/work011235.github.io.git
 
 # Push to GitHub
 git push -u origin main
