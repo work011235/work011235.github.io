@@ -1,6 +1,6 @@
 ---
 title: "GitHub Secrets and Google App Passwords"
-date: 2026-05-28
+date: 2026-05-29
 description: "Note-to-future-self on how to facilitate this workflow."
 tags: ["Github", "Secrets", "Google"]
 ---
@@ -28,4 +28,4 @@ Best practice leverages secrets rather than hard coding sensitive identifiable d
  - Under "General", then under "Security and quality", select "Secrets and Variables"
  - From the dropdown, select "Actions"
  - Click the "New Repository Secret" button and enter the key value pairs generated above
- 
+
