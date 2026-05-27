@@ -5,8 +5,10 @@ import Base     from '../layouts/Base.astro';
 import Header   from '../components/Header.astro';
 import Footer   from '../components/Footer.astro';
 import PostCard from '../components/PostCard.astro';
-
-const posts = (await getCollection('blog', ({ data }) => !data.draft))
+const now = new Date();
+const posts = (await getCollection('blog', ({ data }) => {
+  return !data.draft && (import.meta.env.DEV || data.date <= now);
+}))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const featured = posts.find(p => p.data.featured) ?? posts[0];

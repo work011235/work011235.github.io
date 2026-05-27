@@ -357,6 +357,7 @@ git push
 - Confirm frontmatter has `title`, `date`, and `description`
 - Check `draft: true` is not set
 - Date format must be `YYYY-MM-DD`
+- Verify that `src/pages/index.astro` contains logic to filter out future `post.data.date`
 
 **Theme flashes on load**
 - This is prevented by the inline script in `Base.astro`. If you see a flash, ensure you have not added `async` or `defer` to that script tag.
