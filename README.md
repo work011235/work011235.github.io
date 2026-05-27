@@ -1,4 +1,4 @@
-# yourname.github.io
+# work011235.github.io
 
 A clean, minimalist blog built with [Astro](https://astro.build), using a monospaced type system and full light/dark mode. Posts are plain Markdown files. Deployment is fully automated via GitHub Actions.
 
@@ -203,8 +203,8 @@ Follow these steps exactly. The whole process takes about 10 minutes.
 
 1. Go to [github.com/new](https://github.com/new)
 2. Name the repository **exactly** one of:
-   - `yourusername.github.io` — to publish at `https://yourusername.github.io` ✅ recommended
-   - Any other name (e.g. `blog`) — publishes at `https://yourusername.github.io/blog`
+   - `work011235.github.io` — to publish at `https://work011235.github.io` ✅ recommended
+   - Any other name (e.g. `blog`) — publishes at `https://work011235.github.io/blog`
 3. Set visibility to **Public** (required for free GitHub Pages)
 4. Do **not** initialise with a README (you already have one)
 5. Click **Create repository**
@@ -217,8 +217,8 @@ Open `astro.config.mjs` and set `site` to your real URL:
 
 ```javascript
 export default defineConfig({
-  site: 'https://yourusername.github.io',
-  // or: 'https://yourusername.github.io/repo-name'
+  site: 'https://work011235.github.io',
+  // or: 'https://work011235.github.io/repo-name'
   ...
 });
 ```

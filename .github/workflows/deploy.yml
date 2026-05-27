@@ -22,12 +22,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5  # v4 is actually fine, but v5+ is better if available
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6  # Upgrade from @v4 to @v6
+        uses: actions/setup-node@v4
         with:
-          node-version: 22          # Move from 20 to 22 (the stable LTS)
+          node-version: 20          # Use the stable LTS version
           cache: 'npm'
 
       - name: Install dependencies
@@ -35,9 +35,6 @@ jobs:
 
       - name: Build Astro site
         run: npm run build
-        env:
-          # This forces all background actions to use the Node 24 runtime
-          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
