@@ -131,7 +131,7 @@ Your post content starts here...
 | `date`        | YYYY-MM-DD| ✅ yes   | Publication date (used for sorting)                      |
 | `description` | string    | ✅ yes   | Short summary (shown in list + RSS)                      |
 | `tags`        | string[]  | no       | Array of tags. Creates `/tags/<tag>` pages automatically |
-| `draft`       | boolean   | no       | Set `true` to hide a post from the site (default: false) |
+| `draft`       | boolean   | no       | Set `true` to hide a post. Future dates are also hidden until the date arrives. |
 | `featured`    | boolean   | no       | Set `true` to pin as the hero post on the home page      |
 
 ### Markdown features
